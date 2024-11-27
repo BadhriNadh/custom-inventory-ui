@@ -2,7 +2,7 @@
 
   <mat-toolbar>
     <div class="title-bar-elements">
-      <button mat-icon-button class="title-bar-menu">
+      <button mat-icon-button class="title-bar-menu" (click)="toggleDrawer()">
         <mat-icon>menu</mat-icon>
       </button>
       <div class ="title-bar-Text">
@@ -11,8 +11,6 @@
       <button mat-raised-button class="title-bar-add-btn">Add</button>
     </div>
   </mat-toolbar>
-
-
 
   <mat-form-field class ="zone-selector">
       <mat-label class ="zone-selector-label">Select Zone</mat-label>
@@ -23,38 +21,8 @@
       </mat-select>
   </mat-form-field>
 
-  <mat-drawer mode="side" opened class="draw">
-
-    <mat-toolbar class="draw-profile">
-
-          <mat-icon class="draw-profile-icon" fontIcon="home"></mat-icon>
-
-          <div class ="draw-profile-name">
-            <span>User Name</span>
-          </div>
-
-      </mat-toolbar>
-
-    <mat-list role="list" class="draw-list">
-
-      <mat-list-item role="listitem" class="draw-list-item">
-        <button  mat-raised-button class="draw-list-btn" >By item view </button>
-      </mat-list-item>
-
-      <mat-list-item role="listitem" class="draw-list-item">
-        <button  mat-raised-button class="draw-list-btn" >By zone view </button>
-      </mat-list-item>
-
-      <mat-list-item role="listitem" class="draw-list-item">
-        <button mat-raised-button class="draw-list-btn" >By vendor view</button>
-      </mat-list-item>
-
-      <mat-list-item role="listitem" class="draw-list-item">
-        <button mat-raised-button class="draw-list-btn" >Roster</button>
-      </mat-list-item>
-
-    </mat-list>
-
+  <mat-drawer [mode]="drawerMode" [opened]="drawerOpen" class="draw" (closed)="drawerClosed()">
+    <app-menu-draw></app-menu-draw>
   </mat-drawer>
 </mat-drawer-container>
 

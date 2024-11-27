@@ -13,10 +13,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatListModule} from "@angular/material/list";
+import { MenuDrawComponent } from './menu-draw/menu-draw.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuDrawComponent
   ],
   imports: [
     BrowserModule,
