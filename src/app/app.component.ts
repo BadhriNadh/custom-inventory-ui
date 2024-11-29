@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
 @Component({
@@ -7,10 +7,12 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'custom-inventory-ui';
   drawerOpen = false;
 
   drawerMode: 'over' | 'side' = 'side';  // Default to 'side'
+  remove: boolean = false;
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
