@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,7 @@ import { ItemCardComponent } from './item-card/item-card.component';
 import { ItemInfoDialogComponent } from './item-info-dialog/item-info-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { CountSubmitDialogComponent } from './count-submit-dialog/count-submit-dialog.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,13 @@ import { CountSubmitDialogComponent } from './count-submit-dialog/count-submit-d
     MatListModule,
     MatExpansionModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {subscriptSizing: 'dynamic'}} // Remove wrapper spacing in form elements
