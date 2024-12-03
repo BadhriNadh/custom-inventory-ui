@@ -21,6 +21,13 @@ import { ItemInfoDialogComponent } from './item-info-dialog/item-info-dialog.com
 import {MatDialogModule} from "@angular/material/dialog";
 import { CountSubmitDialogComponent } from './count-submit-dialog/count-submit-dialog.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AddComponent } from './add/add.component';
+import { ItemsByZoneComponent } from './items-by-zone/items-by-zone.component';
+import { ItemsByVendorComponent } from './items-by-vendor/items-by-vendor.component';
+import { AllItemsComponent } from './all-items/all-items.component';
+import { AllZonesComponent } from './all-zones/all-zones.component';
+import { AllVendorsComponent } from './all-vendors/all-vendors.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -28,7 +35,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     MenuDrawComponent,
     ItemCardComponent,
     ItemInfoDialogComponent,
-    CountSubmitDialogComponent
+    CountSubmitDialogComponent,
+    AddComponent,
+    ItemsByZoneComponent,
+    ItemsByVendorComponent,
+    AllItemsComponent,
+    AllZonesComponent,
+    AllVendorsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +64,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    MatTooltipModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {subscriptSizing: 'dynamic'}} // Remove wrapper spacing in form elements

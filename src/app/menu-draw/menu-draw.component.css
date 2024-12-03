@@ -8,6 +8,15 @@
   width: 100%;             /* Ensure the container spans the full width */
 }
 
+.draw-list-item{
+  display: flex;
+}
+
 .draw-list-btn{
+  width: 100% !important;
+}
+
+.draw-list-btn-click{
+  background-color: gray !important;
   width: 100%;
 }

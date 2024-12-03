@@ -1,0 +1,21 @@
+
+.title-bar-elements {
+  display: flex;           /* Arrange children horizontally */
+  align-items: center;     /* Vertically center the elements */
+  justify-content: space-between; /* Push one to left, one to center, one to right */
+  width: 100%;             /* Ensure the container spans the full width */
+}
+
+.vendor-selector{
+  width: 100%;
+}
+
+.search{
+  align-items: center;     /* Vertically center the elements */
+  justify-content: space-between; /* Push one to left, one to center, one to right */
+  width: 100%;
+}
+
+.search .mat-form-field-wrapper {
+  margin-bottom: -1.25em;
+}

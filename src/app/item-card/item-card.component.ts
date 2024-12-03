@@ -9,17 +9,17 @@ import {CountSubmitDialogComponent} from "../count-submit-dialog/count-submit-di
   styleUrls: ['./item-card.component.css']
 })
 export class ItemCardComponent {
-  readonly info = inject(MatDialog);
+  readonly matDialog = inject(MatDialog);
 
   openInfo(): void {
-    const infoRef = this.info.open(ItemInfoDialogComponent);
+    const infoRef = this.matDialog.open(ItemInfoDialogComponent);
 
     infoRef.afterClosed().subscribe(result => {
     });
   }
 
   openSubmit(): void {
-    const submitRef = this.info.open(CountSubmitDialogComponent);
+    const submitRef = this.matDialog.open(CountSubmitDialogComponent);
 
     submitRef.afterClosed().subscribe(result => {
     });

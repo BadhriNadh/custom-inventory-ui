@@ -1,43 +1,33 @@
 <mat-drawer-container class="menu-draw-container" >
 
-  <mat-drawer [mode]="drawerMode" [opened]="drawerOpen" class="draw" (closed)="drawerClosed()">
-    <app-menu-draw></app-menu-draw>
+  <mat-drawer [mode]="drawerMode" [opened]="drawerOpen" class="draw" (closed)="drawerClosed()" >
+    <app-menu-draw (menuSelectEvent)="menuSelect($event)"></app-menu-draw>
   </mat-drawer>
 
-  <mat-toolbar>
-    <div class="title-bar-elements">
-      <button mat-icon-button class="title-bar-menu" (click)="toggleDrawer()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <div class ="title-bar-Text">
-        <span>Store Name</span>
-      </div>
-      <button mat-raised-button class="title-bar-add-btn">Add</button>
-    </div>
-  </mat-toolbar>
+  <app-items-by-zone
+    *ngIf="menuSelectValue === 'zone'"
+    (openDrawerEvent)="toggleDrawer()">
+  </app-items-by-zone>
 
-  <mat-form-field class ="zone-selector">
-      <mat-label class ="zone-selector-label" >Select Zone</mat-label>
-      <mat-select>
-        <mat-option class ="zone-selector-option" value="zone1">zone1</mat-option>
-        <mat-option class ="zone-selector-option" value="zone2">zone1</mat-option>
-        <mat-option class ="zone-selector-option" value="zone2">zone1</mat-option>
-      </mat-select>
-  </mat-form-field>
+  <app-items-by-vendor
+    *ngIf="menuSelectValue === 'vendor'"
+    (openDrawerEvent)="toggleDrawer()">
+  </app-items-by-vendor>
 
-  <mat-form-field appearance="outline" class="search">
-    <input matInput placeholder="search" class="search-input">
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
+  <app-all-items
+    *ngIf="menuSelectValue === 'allItems'"
+    (openDrawerEvent)="toggleDrawer()">
+  </app-all-items>
 
-  <mat-accordion >
-    <mat-list role="list" class="items-list">
-      <app-item-card></app-item-card>
-      <app-item-card></app-item-card>
-      <app-item-card></app-item-card>
-      <app-item-card></app-item-card>
-    </mat-list>
-  </mat-accordion>
+  <app-all-vendors
+    *ngIf="menuSelectValue === 'allVendors'"
+    (openDrawerEvent)="toggleDrawer()">
+  </app-all-vendors>
+
+  <app-all-zones
+    *ngIf="menuSelectValue === 'allZones'"
+    (openDrawerEvent)="toggleDrawer()">
+  </app-all-zones>
 
 
 </mat-drawer-container>

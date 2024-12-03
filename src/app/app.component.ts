@@ -1,5 +1,8 @@
-import {Component, signal} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {CountSubmitDialogComponent} from "./count-submit-dialog/count-submit-dialog.component";
+import {AddComponent} from "./add/add.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +16,7 @@ export class AppComponent {
 
   drawerMode: 'over' | 'side' = 'side';  // Default to 'side'
   remove: boolean = false;
+  menuSelectValue: string = 'zone';
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
@@ -32,5 +36,9 @@ export class AppComponent {
 
   drawerClosed() {
     this.drawerOpen = false;
+  }
+
+  menuSelect(select: string) {
+    this.menuSelectValue = select;
   }
 }

@@ -1,0 +1,35 @@
+<mat-toolbar>
+  <div class="title-bar-elements">
+    <button mat-icon-button class="title-bar-menu" (click)="toggleDrawer()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class ="title-bar-Text">
+      <span>Store Name/Vendor</span>
+    </div>
+    <button mat-raised-button class="title-bar-add-btn" (click)="openAdd()">Add</button>
+  </div>
+</mat-toolbar>
+
+<mat-form-field class ="vendor-selector">
+  <mat-label class ="vendor-selector-label" >Select vendor</mat-label>
+  <mat-select>
+    <mat-option class ="vendor-selector-option" value="vendor1">vendor1</mat-option>
+    <mat-option class ="vendor-selector-option" value="vendor2">vendor1</mat-option>
+    <mat-option class ="vendor-selector-option" value="vendor2">vendor1</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="search">
+  <input matInput placeholder="search" class="search-input">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
+<mat-accordion >
+  <mat-list role="list" class="items-list">
+    <app-item-card></app-item-card>
+    <app-item-card></app-item-card>
+    <app-item-card></app-item-card>
+    <app-item-card></app-item-card>
+  </mat-list>
+</mat-accordion>
+
