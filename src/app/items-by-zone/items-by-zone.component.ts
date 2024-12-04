@@ -1,5 +1,5 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import {AddComponent} from "../add/add.component";
+import {AddZoneComponent} from "../add-zone/add-zone.component";
 import {MatDialog} from "@angular/material/dialog";
 import {AppComponent} from "../app.component";
 
@@ -15,7 +15,7 @@ export class ItemsByZoneComponent {
 
 
   openAdd(): void {
-    const addRef = this.matDialog.open(AddComponent);
+    const addRef = this.matDialog.open(AddZoneComponent);
 
     addRef.afterClosed().subscribe(() => {
     });

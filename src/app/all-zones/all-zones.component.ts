@@ -1,6 +1,6 @@
 import {Component, EventEmitter, inject, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {AddComponent} from "../add/add.component";
+import {AddZoneComponent} from "../add-zone/add-zone.component";
 
 @Component({
   selector: 'app-all-zones',
@@ -13,7 +13,7 @@ export class AllZonesComponent {
 
 
   openAdd(): void {
-    const addRef = this.matDialog.open(AddComponent);
+    const addRef = this.matDialog.open(AddZoneComponent);
 
     addRef.afterClosed().subscribe(() => {
     });

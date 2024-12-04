@@ -1,6 +1,7 @@
 import {Component, EventEmitter, inject, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {AddComponent} from "../add/add.component";
+import {AddZoneComponent} from "../add-zone/add-zone.component";
+import {AddVendorComponent} from "../add-vendor/add-vendor.component";
 
 @Component({
   selector: 'app-all-vendors',
@@ -13,7 +14,7 @@ export class AllVendorsComponent {
 
 
   openAdd(): void {
-    const addRef = this.matDialog.open(AddComponent);
+    const addRef = this.matDialog.open(AddVendorComponent);
 
     addRef.afterClosed().subscribe(() => {
     });

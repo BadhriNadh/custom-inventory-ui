@@ -21,7 +21,7 @@ import { ItemInfoDialogComponent } from './item-info-dialog/item-info-dialog.com
 import {MatDialogModule} from "@angular/material/dialog";
 import { CountSubmitDialogComponent } from './count-submit-dialog/count-submit-dialog.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { AddComponent } from './add/add.component';
+import { AddZoneComponent } from './add-zone/add-zone.component';
 import { ItemsByZoneComponent } from './items-by-zone/items-by-zone.component';
 import { ItemsByVendorComponent } from './items-by-vendor/items-by-vendor.component';
 import { AllItemsComponent } from './all-items/all-items.component';
@@ -31,6 +31,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { ZoneCardComponent } from './zone-card/zone-card.component';
 import { VendorCardComponent } from './vendor-card/vendor-card.component';
 import {ItemCardComponent} from "./item-card/item-card.component";
+import { AddVendorComponent } from './add-vendor/add-vendor.component';
+import { AddItemComponent } from './add-item/add-item.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import {ItemCardComponent} from "./item-card/item-card.component";
     ItemCountCardComponent,
     ItemInfoDialogComponent,
     CountSubmitDialogComponent,
-    AddComponent,
+    AddZoneComponent,
     ItemsByZoneComponent,
     ItemsByVendorComponent,
     AllItemsComponent,
@@ -47,7 +49,9 @@ import {ItemCardComponent} from "./item-card/item-card.component";
     AllVendorsComponent,
     ZoneCardComponent,
     VendorCardComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    AddVendorComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,

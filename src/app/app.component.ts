@@ -1,7 +1,7 @@
 import {Component, inject, signal} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {CountSubmitDialogComponent} from "./count-submit-dialog/count-submit-dialog.component";
-import {AddComponent} from "./add/add.component";
+import {AddZoneComponent} from "./add-zone/add-zone.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({
