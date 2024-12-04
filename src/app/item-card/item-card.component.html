@@ -1,43 +1,25 @@
 <mat-expansion-panel hideToggle class = 'item-card'>
   <mat-expansion-panel-header>
     <div class = 'item-card-header'>
-      <mat-panel-title class = 'item-name'> Item name  </mat-panel-title>
-      <mat-panel-description class = 'item-save-count'> 500 </mat-panel-description>
-      <div class = 'item-status'>
-        <mat-icon class = 'item-status-quant'>expand_circle_down</mat-icon>
-        <mat-icon class = 'item-status-count'>task_alt</mat-icon>
-      </div>
+      <mat-panel-title class = 'item-name'> item name  </mat-panel-title>
+      <mat-panel-description class = 'item-total-count'> 40 </mat-panel-description>
+      <mat-panel-description class = 'item-quant'> Quant: Box </mat-panel-description>
     </div>
   </mat-expansion-panel-header>
-
-  <div class="count-input-group">
-    <button mat-mini-fab class = 'item-edit-minus-btn'>
-      <mat-icon>remove</mat-icon>
-    </button>
-    <mat-form-field class = 'item-count-input-txt' appearance="outline">
-      <mat-label>
-        <strong *ngIf=true>in boxes</strong>
-        <strong *ngIf=false>in items</strong>
-        <!--            <strong *ngIf="showBoxHint">Count as box</strong>-->
-        <!--            <strong *ngIf="!showBoxHint">Count as item</strong>-->
-      </mat-label>
-      <input matInput type="number"  min="0"  >
-    </mat-form-field>
-    <button mat-mini-fab class = 'item-edit-add-btn'>
-      <mat-icon>add</mat-icon>
-    </button>
+  <mat-list role="list" class="item-info-list">
+    <mat-list-item role="listitem" class="item-info-list-id">Id: 100028982</mat-list-item>
+    <mat-list-item role="listitem" class="info-item-list-quant">Quant: Box has 2 of them</mat-list-item>
+    <mat-list-item role="listitem" class="info-item-list-expire">Best window: 2 weeks</mat-list-item>
+    <mat-list-item role="listitem" class="item-info-list-create">Created/Updated: 21-07-2024</mat-list-item>
+    <mat-list role="list" class="info-item-zone-list">
+      <mat-list-item role="listitem">Zone 1: 20 boxes</mat-list-item>
+      <mat-list-item role="listitem">Zone 2: 20 boxes</mat-list-item>
+    </mat-list>
+    <mat-list-item role="listitem" class="item-info-list-item-count">Total items: 40</mat-list-item>
+  </mat-list>
+  <div class="action-group">
+    <button mat-raised-button class="action-edit-btn" *ngIf="true">edit</button>
+    <button mat-raised-button class="action-open-btn" *ngIf="true">open</button>
+    <button mat-raised-button class="action-delete-btn" *ngIf="true">Delete</button>
   </div>
-
-  <div class="count-action-group">
-    <button mat-mini-fab class="count-action-info-btn" *ngIf="true" (click)="openInfo()">
-      <mat-icon>info</mat-icon>
-    </button>
-    <button mat-raised-button class="count-action-save-btn" (click)="openSubmit()">submit</button>
-    <button mat-mini-fab class="count-action-delete-btn" *ngIf="true">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </div>
-
-
-
 </mat-expansion-panel>

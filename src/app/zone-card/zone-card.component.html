@@ -1,0 +1,21 @@
+<mat-expansion-panel hideToggle class = 'zone-card'>
+  <mat-expansion-panel-header>
+    <div class = 'zone-card-header'>
+      <mat-panel-title class = 'zone-name'> Zone name  </mat-panel-title>
+<!--      <mat-panel-description class = 'zone-items-count'> 500 </mat-panel-description>-->
+<!--      <mat-panel-description class = 'zone-type'> Frozen </mat-panel-description>-->
+    </div>
+  </mat-expansion-panel-header>
+  <mat-list role="list" class="zone-info-list">
+    <mat-list-item role="listitem" class="zone-info-list-id">Id: 100028982</mat-list-item>
+<!--    <mat-list-item role="listitem" class="zone-info-list-type">Type: Frozen</mat-list-item>-->
+    <mat-list-item role="listitem" class="zone-info-list-create">Created/Updated: 21-07-2024</mat-list-item>
+    <mat-list-item role="listitem" class="zone-info-list-item-count">Total items: 40</mat-list-item>
+  </mat-list>
+  <div class="action-group">
+    <div></div>
+    <button mat-raised-button class="action-open-btn" *ngIf="true">open</button>
+    <button mat-raised-button class="action-delete-btn" *ngIf="true">Delete</button>
+  </div>
+</mat-expansion-panel>
+

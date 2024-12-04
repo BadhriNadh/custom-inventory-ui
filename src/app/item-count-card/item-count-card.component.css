@@ -10,18 +10,24 @@
   flex: 1;                    /* Makes sure the item name stays on the left */
 }
 
-.item-total-count {
-  /*text-align: left;         !* Center the middle item *!*/
+.item-save-count {
+  text-align: right;         /* Center the middle item */
   flex: 1;                    /* Keeps it in the middle */
 }
 
-.item-quant {
-  /*text-align: left;          !* Align the last item to the right *!*/
+.item-status {
+  text-align: right;          /* Align the last item to the right */
   flex: 1;    /* Keeps it aligned to the right */
 }
 
+.count-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
 
-.action-group {
+.count-action-group {
   display: flex;
   justify-content: space-between; /* Spaces elements across the row */
   align-items: center; /* Aligns elements vertically */

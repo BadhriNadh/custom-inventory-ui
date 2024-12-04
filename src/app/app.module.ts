@@ -16,7 +16,7 @@ import {MatListModule} from "@angular/material/list";
 import { MenuDrawComponent } from './menu-draw/menu-draw.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatInputModule} from "@angular/material/input";
-import { ItemCardComponent } from './item-card/item-card.component';
+import { ItemCountCardComponent } from './item-count-card/item-count-card.component';
 import { ItemInfoDialogComponent } from './item-info-dialog/item-info-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { CountSubmitDialogComponent } from './count-submit-dialog/count-submit-dialog.component';
@@ -28,12 +28,15 @@ import { AllItemsComponent } from './all-items/all-items.component';
 import { AllZonesComponent } from './all-zones/all-zones.component';
 import { AllVendorsComponent } from './all-vendors/all-vendors.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { ZoneCardComponent } from './zone-card/zone-card.component';
+import { VendorCardComponent } from './vendor-card/vendor-card.component';
+import {ItemCardComponent} from "./item-card/item-card.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuDrawComponent,
-    ItemCardComponent,
+    ItemCountCardComponent,
     ItemInfoDialogComponent,
     CountSubmitDialogComponent,
     AddComponent,
@@ -41,7 +44,10 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     ItemsByVendorComponent,
     AllItemsComponent,
     AllZonesComponent,
-    AllVendorsComponent
+    AllVendorsComponent,
+    ZoneCardComponent,
+    VendorCardComponent,
+    ItemCardComponent
   ],
   imports: [
     BrowserModule,
