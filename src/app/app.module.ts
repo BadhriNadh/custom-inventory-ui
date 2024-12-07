@@ -21,7 +21,7 @@ import { ItemInfoDialogComponent } from './item-info-dialog/item-info-dialog.com
 import {MatDialogModule} from "@angular/material/dialog";
 import { CountSubmitDialogComponent } from './count-submit-dialog/count-submit-dialog.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { AddZoneComponent } from './add-zone/add-zone.component';
+import { AddZoneDialogComponent } from './add-zone-dialog/add-zone-dialog.component';
 import { ItemsByZoneComponent } from './items-by-zone/items-by-zone.component';
 import { ItemsByVendorComponent } from './items-by-vendor/items-by-vendor.component';
 import { AllItemsComponent } from './all-items/all-items.component';
@@ -31,8 +31,12 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { ZoneCardComponent } from './zone-card/zone-card.component';
 import { VendorCardComponent } from './vendor-card/vendor-card.component';
 import {ItemCardComponent} from "./item-card/item-card.component";
-import { AddVendorComponent } from './add-vendor/add-vendor.component';
-import { AddItemComponent } from './add-item/add-item.component';
+import { AddVendorDialogComponent } from './add-vendor-dialog/add-vendor-dialog.component';
+import { AddItemDialogComponent } from './add-item-dialog/add-item-dialog.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -41,7 +45,7 @@ import { AddItemComponent } from './add-item/add-item.component';
     ItemCountCardComponent,
     ItemInfoDialogComponent,
     CountSubmitDialogComponent,
-    AddZoneComponent,
+    AddZoneDialogComponent,
     ItemsByZoneComponent,
     ItemsByVendorComponent,
     AllItemsComponent,
@@ -50,8 +54,11 @@ import { AddItemComponent } from './add-item/add-item.component';
     ZoneCardComponent,
     VendorCardComponent,
     ItemCardComponent,
-    AddVendorComponent,
-    AddItemComponent
+    AddVendorDialogComponent,
+    AddItemDialogComponent,
+    LoginComponent,
+    ProfileComponent,
+    LogoutDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +82,8 @@ import { AddItemComponent } from './add-item/add-item.component';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {subscriptSizing: 'dynamic'}} // Remove wrapper spacing in form elements

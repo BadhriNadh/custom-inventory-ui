@@ -1,7 +1,7 @@
 import {Component, EventEmitter, inject, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {AddZoneComponent} from "../add-zone/add-zone.component";
-import {AddItemComponent} from "../add-item/add-item.component";
+import {AddZoneDialogComponent} from "../add-zone-dialog/add-zone-dialog.component";
+import {AddItemDialogComponent} from "../add-item-dialog/add-item-dialog.component";
 
 @Component({
   selector: 'app-all-items',
@@ -14,13 +14,13 @@ export class AllItemsComponent {
 
 
   openAdd(): void {
-    const addRef = this.matDialog.open(AddItemComponent);
+    const addRef = this.matDialog.open(AddItemDialogComponent);
 
     addRef.afterClosed().subscribe(() => {
     });
   }
 
-  toggleDrawer() {
+  openDrawerEventCreate() {
     this.openDrawerEvent.emit();
   }
 }

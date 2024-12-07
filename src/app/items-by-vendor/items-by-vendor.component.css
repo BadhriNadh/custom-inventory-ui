@@ -1,9 +1,20 @@
 
 .title-bar-elements {
-  display: flex;           /* Arrange children horizontally */
-  align-items: center;     /* Vertically center the elements */
-  justify-content: space-between; /* Push one to left, one to center, one to right */
-  width: 100%;             /* Ensure the container spans the full width */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.title-bar-menu {
+  margin-right: auto; /* Aligns menu button to the left */
+}
+
+.title-bar-Text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Centers the text */
+  text-align: center;
 }
 
 .vendor-selector{

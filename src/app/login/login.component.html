@@ -1,0 +1,40 @@
+
+<div class="login-wrapper">
+  <form class="login-form">
+    <mat-form-field class="username-form-filed">
+      <mat-label>Enter your username</mat-label>
+      <input
+        matInput
+        [formControl]="email"
+        (blur)="updateErrorMessage()"
+        required
+        class="username-form-input"
+      />
+      <mat-error *ngIf="email.invalid">{{ errorMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="password-form-filed">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide() ? 'password' : 'text'"
+             class="password-form-input"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()"
+      >
+        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div>
+      <button mat-raised-button class="login-btn" type="submit" (click)="loginClick()">Login</button>
+    </div>
+  </form>
+</div>
+
+
+
+

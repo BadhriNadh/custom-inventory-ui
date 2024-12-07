@@ -1,5 +1,5 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import {AddZoneComponent} from "../add-zone/add-zone.component";
+import {AddZoneDialogComponent} from "../add-zone-dialog/add-zone-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {AppComponent} from "../app.component";
 
@@ -15,13 +15,13 @@ export class ItemsByZoneComponent {
 
 
   openAdd(): void {
-    const addRef = this.matDialog.open(AddZoneComponent);
+    const addRef = this.matDialog.open(AddZoneDialogComponent);
 
     addRef.afterClosed().subscribe(() => {
     });
   }
 
-  toggleDrawer() {
+  openDrawerEventCreate() {
     this.openDrawerEvent.emit();
   }
 }

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddZoneComponent } from './add-zone.component';
+import { AddZoneDialogComponent } from './add-zone-dialog.component';
 
 describe('AddComponent', () => {
-  let component: AddZoneComponent;
-  let fixture: ComponentFixture<AddZoneComponent>;
+  let component: AddZoneDialogComponent;
+  let fixture: ComponentFixture<AddZoneDialogComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AddZoneComponent]
+      declarations: [AddZoneDialogComponent]
     });
-    fixture = TestBed.createComponent(AddZoneComponent);
+    fixture = TestBed.createComponent(AddZoneDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

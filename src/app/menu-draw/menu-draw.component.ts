@@ -34,4 +34,9 @@ export class MenuDrawComponent {
     this.menuSelectValue = 'allZones';
     this.menuSelectEvent.emit(this.menuSelectValue);
   }
+
+  onProfileViewClick() {
+    this.menuSelectValue = 'profile';
+    this.menuSelectEvent.emit(this.menuSelectValue);
+  }
 }

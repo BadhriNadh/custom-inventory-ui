@@ -2,7 +2,11 @@
 
 <mat-toolbar class="draw-profile">
 
-  <mat-icon class="draw-profile-icon" fontIcon="account_circle"></mat-icon>
+  <button mat-icon-button class="draw-profile-btn"
+          [style.background-color]="menuSelectValue === 'profile' ? 'lightgray' : 'white'"
+          (click)="onProfileViewClick()"  >
+    <mat-icon class="draw-profile-icon">person</mat-icon>
+  </button>
 
   <div class ="draw-profile-name">
     <span>User Name</span>

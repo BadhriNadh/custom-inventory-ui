@@ -4,6 +4,15 @@
     <app-menu-draw (menuSelectEvent)="menuSelect($event)"></app-menu-draw>
   </mat-drawer>
 
+  <app-login
+    *ngIf="menuSelectValue === 'login'"
+  (loginEvent)="loggedIn()" >
+  </app-login>
+  <app-profile
+    *ngIf="menuSelectValue === 'profile'"
+    (openDrawerEvent)="toggleDrawer()">
+  </app-profile>
+
   <app-items-by-zone
     *ngIf="menuSelectValue === 'zone'"
     (openDrawerEvent)="toggleDrawer()">

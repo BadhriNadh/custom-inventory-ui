@@ -2,25 +2,25 @@ import {Component, EventEmitter, inject, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AddZoneDialogComponent} from "../add-zone-dialog/add-zone-dialog.component";
 import {AddVendorDialogComponent} from "../add-vendor-dialog/add-vendor-dialog.component";
+import {LogoutDialogComponent} from "../logout-dialog/logout-dialog.component";
 
 @Component({
-  selector: 'app-all-vendors',
-  templateUrl: './all-vendors.component.html',
-  styleUrls: ['./all-vendors.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class AllVendorsComponent {
+export class ProfileComponent {
   @Output() openDrawerEvent = new EventEmitter<void>();
   readonly matDialog = inject(MatDialog);
-
-
-  openAdd(): void {
-    const addRef = this.matDialog.open(AddVendorDialogComponent);
-
-    addRef.afterClosed().subscribe(() => {
-    });
-  }
 
   openDrawerEventCreate() {
     this.openDrawerEvent.emit();
   }
+
+
+  openLogout(): void {
+      const addRef = this.matDialog.open(LogoutDialogComponent);
+      addRef.afterClosed().subscribe(() => {
+      });
+    }
 }
