@@ -6,8 +6,15 @@
 
   <app-login
     *ngIf="menuSelectValue === 'login'"
-  (loginEvent)="loggedIn()" >
+    (loginEvent)="loggedIn()"
+    (openRegisterEvent)="openRegister()" >
   </app-login>
+
+  <app-register
+    *ngIf="menuSelectValue === 'register'"
+    (loginOnRegisterEvent)="switchToLogin()">
+  </app-register>
+
   <app-profile
     *ngIf="menuSelectValue === 'profile'"
     (openDrawerEvent)="toggleDrawer()">

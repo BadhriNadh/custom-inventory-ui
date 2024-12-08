@@ -19,8 +19,8 @@ export class ProfileComponent {
 
 
   openLogout(): void {
-      const addRef = this.matDialog.open(LogoutDialogComponent);
-      addRef.afterClosed().subscribe(() => {
+      const logoutRef = this.matDialog.open(LogoutDialogComponent);
+      logoutRef.afterClosed().subscribe((result) => {
       });
     }
 }

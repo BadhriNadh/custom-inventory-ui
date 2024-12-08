@@ -37,6 +37,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     AddItemDialogComponent,
     LoginComponent,
     ProfileComponent,
-    LogoutDialogComponent
+    LogoutDialogComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

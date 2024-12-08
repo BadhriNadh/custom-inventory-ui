@@ -1,17 +1,16 @@
 import {Component, EventEmitter, Output, signal} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {merge} from "rxjs";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent {
+export class RegisterComponent {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
-  @Output() loginEvent = new EventEmitter();
-  @Output() openRegisterEvent = new EventEmitter();
+  @Output() loginOnRegisterEvent = new EventEmitter<string>();
   errorMessage = signal('');
 
   constructor() {
@@ -36,11 +35,7 @@ export class LoginComponent {
     event.stopPropagation();
   }
 
-  loginClick() {
-    this.loginEvent.emit();
-  }
-
-  openRegisterClick() {
-    this.openRegisterEvent.emit();
+  loginOnRegisterClick() {
+    this.loginOnRegisterEvent.emit("login")
   }
 }

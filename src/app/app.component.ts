@@ -45,4 +45,12 @@ export class AppComponent {
   loggedIn() {
     this.menuSelectValue = "zone";
   }
+
+  switchToLogin() {
+    this.menuSelectValue = "login";
+  }
+
+  openRegister() {
+    this.menuSelectValue = "register";
+  }
 }
