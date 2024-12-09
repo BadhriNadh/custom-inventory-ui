@@ -9,7 +9,7 @@ import {AddVendorDialogComponent} from "../add-vendor-dialog/add-vendor-dialog.c
   styleUrls: ['./all-vendors.component.css']
 })
 export class AllVendorsComponent {
-  @Output() openDrawerEvent = new EventEmitter<void>();
+  @Output() toggleMenuEvent = new EventEmitter<void>();
   readonly matDialog = inject(MatDialog);
 
 
@@ -20,7 +20,7 @@ export class AllVendorsComponent {
     });
   }
 
-  openDrawerEventCreate() {
-    this.openDrawerEvent.emit();
+  toggleMenuEventEmit() {
+    this.toggleMenuEvent.emit();
   }
 }

@@ -11,6 +11,7 @@ import {LogoutDialogComponent} from "../logout-dialog/logout-dialog.component";
 })
 export class ProfileComponent {
   @Output() openDrawerEvent = new EventEmitter<void>();
+  @Output() userLogoutEvent = new EventEmitter<void>();
   readonly matDialog = inject(MatDialog);
 
   openDrawerEventCreate() {
@@ -21,6 +22,13 @@ export class ProfileComponent {
   openLogout(): void {
       const logoutRef = this.matDialog.open(LogoutDialogComponent);
       logoutRef.afterClosed().subscribe((result) => {
+        if(result === true){
+          this.userLogout();
+        }
       });
-    }
+  }
+
+  userLogout(): void{
+    this.userLogoutEvent.emit();
+  }
 }

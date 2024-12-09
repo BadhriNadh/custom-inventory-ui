@@ -8,8 +8,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 })
 export class LogoutDialogComponent {
   readonly infoRef = inject(MatDialogRef<LogoutDialogComponent>);
-  @Output() logoutEvent = new EventEmitter();
   onYesClick(): void {
-    this.infoRef.close();
+    this.infoRef.close(true);
   }
 }

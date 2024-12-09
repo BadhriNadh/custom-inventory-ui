@@ -10,7 +10,7 @@ import {AppComponent} from "../app.component";
 })
 export class ItemsByZoneComponent {
 
-  @Output() openDrawerEvent = new EventEmitter<void>();
+  @Output() toggleMenuEvent = new EventEmitter<void>();
   readonly matDialog = inject(MatDialog);
 
 
@@ -21,7 +21,7 @@ export class ItemsByZoneComponent {
     });
   }
 
-  openDrawerEventCreate() {
-    this.openDrawerEvent.emit();
+  toggleMenuEventEmit() {
+    this.toggleMenuEvent.emit();
   }
 }

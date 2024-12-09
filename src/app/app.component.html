@@ -1,48 +1,49 @@
 <mat-drawer-container class="menu-draw-container" >
 
-  <mat-drawer [mode]="drawerMode" [opened]="drawerOpen" class="draw" (closed)="drawerClosed()" >
+  <mat-drawer [mode]="menuMode" [opened]="menuOpen" class="draw" (closed)="setMenuClosed()" >
     <app-menu-draw (menuSelectEvent)="menuSelect($event)"></app-menu-draw>
   </mat-drawer>
 
   <app-login
-    *ngIf="menuSelectValue === 'login'"
+    *ngIf="pageValue === 'login'"
     (loginEvent)="loggedIn()"
     (openRegisterEvent)="openRegister()" >
   </app-login>
 
   <app-register
-    *ngIf="menuSelectValue === 'register'"
+    *ngIf="pageValue === 'register'"
     (loginOnRegisterEvent)="switchToLogin()">
   </app-register>
 
   <app-profile
-    *ngIf="menuSelectValue === 'profile'"
-    (openDrawerEvent)="toggleDrawer()">
+    *ngIf="pageValue === 'profile'"
+    (openDrawerEvent)="toggleMenu()"
+    (userLogoutEvent)="userLogout()">
   </app-profile>
 
   <app-items-by-zone
-    *ngIf="menuSelectValue === 'zone'"
-    (openDrawerEvent)="toggleDrawer()">
+    *ngIf="pageValue === 'zone'"
+    (toggleMenuEvent)="toggleMenu()">
   </app-items-by-zone>
 
   <app-items-by-vendor
-    *ngIf="menuSelectValue === 'vendor'"
-    (openDrawerEvent)="toggleDrawer()">
+    *ngIf="pageValue === 'vendor'"
+    (toggleMenuEvent)="toggleMenu()">
   </app-items-by-vendor>
 
   <app-all-items
-    *ngIf="menuSelectValue === 'allItems'"
-    (openDrawerEvent)="toggleDrawer()">
+    *ngIf="pageValue === 'allItems'"
+    (toggleMenuEvent)="toggleMenu()">
   </app-all-items>
 
   <app-all-vendors
-    *ngIf="menuSelectValue === 'allVendors'"
-    (openDrawerEvent)="toggleDrawer()">
+    *ngIf="pageValue === 'allVendors'"
+    (toggleMenuEvent)="toggleMenu()">
   </app-all-vendors>
 
   <app-all-zones
-    *ngIf="menuSelectValue === 'allZones'"
-    (openDrawerEvent)="toggleDrawer()">
+    *ngIf="pageValue === 'allZones'"
+    (toggleMenuEvent)="toggleMenu()">
   </app-all-zones>
 
 

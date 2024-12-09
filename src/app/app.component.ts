@@ -12,45 +12,49 @@ import {MatDialog} from "@angular/material/dialog";
 export class AppComponent {
 
   title = 'custom-inventory-ui';
-  drawerOpen = false;
+  menuOpen = false;
 
-  drawerMode: 'over' | 'side' = 'side';  // Default to 'side'
-  remove: boolean = false;
-  menuSelectValue: string = 'login';
+  menuMode: 'over' | 'side' = 'side';  // Default to 'side'
+  pageValue: string = 'login';
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit() {
     this.breakpointObserver.observe([Breakpoints.Handset])
       .subscribe(result => {
-        this.drawerMode = result.matches ? 'over' : 'side';
+        this.menuMode = result.matches ? 'over' : 'side';
         if (result.matches) {
-          this.drawerOpen = false;  // Close the drawer on small screens
+          this.menuOpen = false;  // Close the drawer on small screens
         }
       });
   }
 
-  toggleDrawer() {
-    this.drawerOpen = !this.drawerOpen;
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 
-  drawerClosed() {
-    this.drawerOpen = false;
+  setMenuClosed() {
+    this.menuOpen = false;
   }
 
   menuSelect(select: string) {
-    this.menuSelectValue = select;
+    this.pageValue = select;
   }
 
   loggedIn() {
-    this.menuSelectValue = "zone";
+    this.pageValue = "zone";
   }
 
   switchToLogin() {
-    this.menuSelectValue = "login";
+    this.pageValue = "login";
   }
 
   openRegister() {
-    this.menuSelectValue = "register";
+    this.pageValue = "register";
+  }
+
+  userLogout() {
+    this.pageValue = "login";
+    this.setMenuClosed()
   }
 }

@@ -9,7 +9,7 @@ import {AddItemDialogComponent} from "../add-item-dialog/add-item-dialog.compone
   styleUrls: ['./all-items.component.css']
 })
 export class AllItemsComponent {
-  @Output() openDrawerEvent = new EventEmitter<void>();
+  @Output() toggleMenuEvent = new EventEmitter<void>();
   readonly matDialog = inject(MatDialog);
 
 
@@ -20,7 +20,7 @@ export class AllItemsComponent {
     });
   }
 
-  openDrawerEventCreate() {
-    this.openDrawerEvent.emit();
+  toggleMenuEventEmit() {
+    this.toggleMenuEvent.emit();
   }
 }

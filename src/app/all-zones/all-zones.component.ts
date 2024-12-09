@@ -8,7 +8,7 @@ import {AddZoneDialogComponent} from "../add-zone-dialog/add-zone-dialog.compone
   styleUrls: ['./all-zones.component.css']
 })
 export class AllZonesComponent {
-  @Output() openDrawerEvent = new EventEmitter<void>();
+  @Output() toggleMenuEvent = new EventEmitter<void>();
   readonly matDialog = inject(MatDialog);
 
 
@@ -19,7 +19,7 @@ export class AllZonesComponent {
     });
   }
 
-  openDrawerEventCreate() {
-    this.openDrawerEvent.emit();
+  toggleMenuEventEmit() {
+    this.toggleMenuEvent.emit();
   }
 }
