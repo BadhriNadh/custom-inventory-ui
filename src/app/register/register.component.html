@@ -4,6 +4,16 @@
     <div>
       <h1>Register</h1>
     </div>
+
+    <mat-form-field class="profile-form-filed">
+      <mat-label>Enter your profile name</mat-label>
+      <input
+        matInput
+        required
+        class="profile-form-input"
+      />
+    </mat-form-field>
+
     <mat-form-field class="username-form-filed">
       <mat-label>Enter your username</mat-label>
       <input
@@ -18,7 +28,7 @@
 
     <mat-form-field class="password-form-filed">
       <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide() ? 'password' : 'text'"
+      <input matInput [type]="hide() ? 'password' : 'text'" required
              class="password-form-input"
       />
       <button
@@ -27,17 +37,18 @@
         (click)="clickEvent($event)"
         [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide()"
+        type="button"
       >
         <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
 
     <div>
-      <button mat-raised-button class="register-btn" >Register</button>
+      <button mat-raised-button class="register-btn" type="submit" >Register</button>
     </div>
 
     <div>
-      <button mat-raised-button class="login-btn" type="submit" (click)="loginOnRegisterClick()">Login</button>
+      <button mat-raised-button class="login-btn" type="button" (click)="loginOnRegisterClick()">Login</button>
     </div>
 
   </form>

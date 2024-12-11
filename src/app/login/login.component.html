@@ -27,7 +27,8 @@
         (click)="clickEvent($event)"
         [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide()"
-      >
+        type="button"
+        >
         <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
@@ -36,7 +37,7 @@
       <button mat-raised-button class="login-btn" type="submit" (click)="loginClick()">Login</button>
     </div>
     <div>
-      <button mat-raised-button class="register-btn" (click)="openRegisterClick()" >Register</button>
+      <button mat-raised-button class="register-btn" type="button" (click)="openRegisterClick()" >Register</button>
     </div>
   </form>
 </div>
