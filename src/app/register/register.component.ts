@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Output, signal } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {AccessApiService} from "../service/access/access-api.service";
-import {User} from "../models/user.model";
+import {User} from "../request-models/user.model";
+import {ApiResponse} from "../response-models/api-response.model";
 
 
 @Component({
@@ -83,7 +84,7 @@ export class RegisterComponent {
     this.loginOnRegisterEvent.emit('login');
   }
 
-  onSubmit() {
+  onRegisterClick() {
     if (this.profileName.invalid || this.email.invalid || this.password.invalid) {
       return;
     }
@@ -95,19 +96,15 @@ export class RegisterComponent {
     );
 
     this.accessApiService.registerUser(user).subscribe({
-      next: (response) => {
-
-        if(response.status == 202){
+      next: (response: ApiResponse<string>) => {
+        if(response.isSuccess()){
           this.registerStatusMessage.set('user successfully registered 👍')
-        }else if(response.status == 409){
+        }else if(response.isConflict()){
           this.registerStatusMessage.set('user already registered no recovery')
         }
       },
       error: (error) => {
-        console.log(error)
-        if(error.status == 401){
-          this.registerStatusMessage.set('user already exists no recovery')
-        }
+        this.registerStatusMessage.set('please try after sometime')
       },
     });
   }

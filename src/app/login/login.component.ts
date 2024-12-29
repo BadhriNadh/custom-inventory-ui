@@ -2,8 +2,10 @@ import {Component, EventEmitter, Output, signal} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {merge} from "rxjs";
-import {User} from "../models/user.model";
+import {User} from "../request-models/user.model";
 import {AccessApiService} from "../service/access/access-api.service";
+import {ApiResponse} from "../response-models/api-response.model";
+import {LoginData} from "../response-models/login-data.model";
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,8 @@ export class LoginComponent {
   errorEmailMessage = signal('');
   errorPasswordMessage = signal('');
   loginStatusMessage = signal('');
+
+  hide = signal(true);
 
   constructor(private accessApiService: AccessApiService) {
     merge(this.email.statusChanges, this.email.valueChanges)
@@ -55,7 +59,6 @@ export class LoginComponent {
     }
   }
 
-  hide = signal(true);
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
@@ -74,11 +77,20 @@ export class LoginComponent {
     );
 
     this.accessApiService.loginUser(user).subscribe({
-      next: (response) => {
-        this.loginEvent.emit();
+      next: (response: ApiResponse<LoginData>) => {
+        if (response.isSuccess()) {
+          if (response.data.saveLoginData()) {
+            this.loginEvent.emit();
+          } else {
+            this.loginStatusMessage.set('Please try again later');
+          }
+        } else {
+          this.loginStatusMessage.set('Please try again later');
+        }
       },
       error: (error) => {
-        if (error.status == 401) {
+        console.log(error)
+        if (error.status === 401) {
           this.loginStatusMessage.set('❌ wrong user name or password')
         }else{
           this.loginStatusMessage.set('please try after some time')
