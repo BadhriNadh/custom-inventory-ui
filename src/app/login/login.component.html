@@ -8,18 +8,23 @@
       <mat-label>Enter your username</mat-label>
       <input
         matInput
-        [formControl]="email"
-        (blur)="updateErrorMessage()"
         required
+        [formControl]="email"
+        (blur)="updateEmailErrorMessage()"
         class="username-form-input"
       />
-      <mat-error *ngIf="email.invalid">{{ errorMessage() }}</mat-error>
+      <mat-error *ngIf="email.invalid">{{ errorEmailMessage() }}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="password-form-filed">
       <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide() ? 'password' : 'text'"
-             class="password-form-input"
+      <input
+        matInput
+        required
+        [formControl]="password"
+        [type]="hide() ? 'password' : 'text'"
+        (blur)="updatePasswordErrorMessage()"
+        class="password-form-input"
       />
       <button
         mat-icon-button
@@ -31,10 +36,11 @@
         >
         <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
+      <mat-error *ngIf="password.invalid">{{ errorPasswordMessage() }}</mat-error>
     </mat-form-field>
-
+    <mat-error>{{ loginStatusMessage() }}</mat-error>
     <div>
-      <button mat-raised-button class="login-btn" type="submit" (click)="loginClick()">Login</button>
+      <button mat-raised-button class="login-btn" type="button" (click)="loginClick()">Login</button>
     </div>
     <div>
       <button mat-raised-button class="register-btn" type="button" (click)="openRegisterClick()" >Register</button>

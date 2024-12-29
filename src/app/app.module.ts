@@ -38,6 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { RegisterComponent } from './register/register.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { RegisterComponent } from './register/register.component';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {subscriptSizing: 'dynamic'}} // Remove wrapper spacing in form elements
