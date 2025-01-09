@@ -1,6 +1,6 @@
 import {Component, EventEmitter, inject, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {AddZoneDialogComponent} from "../zones-view/add-zone-dialog/add-zone-dialog.component";
+import {AddZoneDialogComponent} from "../../zones-view/add-zone-dialog/add-zone-dialog.component";
 import {AddItemDialogComponent} from "../add-item-dialog/add-item-dialog.component";
 
 @Component({

@@ -1,0 +1,29 @@
+.item-card-header{
+  display: flex;           /* Arrange children horizontally */
+  align-items: center;     /* Vertically center the elements */
+  justify-content: space-between; /* Push one to left, one to center, one to right */
+  width: 100%;             /* Ensure the container spans the full width */
+}
+
+.item-name {
+  display: flex;
+  flex: 1;                    /* Makes sure the item name stays on the left */
+}
+
+.item-total-count {
+  /*text-align: left;         !* Center the middle item *!*/
+  flex: 1;                    /* Keeps it in the middle */
+}
+
+.item-quant {
+  /*text-align: left;          !* Align the last item to the right *!*/
+  flex: 1;    /* Keeps it aligned to the right */
+}
+
+
+/*.action-group {*/
+/*  display: flex;*/
+/*  justify-content: space-between; !* Spaces elements across the row *!*/
+/*  align-items: center; !* Aligns elements vertically *!*/
+/*  padding-top: 12px;*/
+/*}*/

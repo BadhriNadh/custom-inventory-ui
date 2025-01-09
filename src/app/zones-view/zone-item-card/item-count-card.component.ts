@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {ItemInfoDialogComponent} from "../../vendors-view/item-info-dialog/item-info-dialog.component";
-import {CountSubmitDialogComponent} from "../count-submit-dialog/count-submit-dialog.component";
+import {ItemInfoDialogComponent} from "../zone-item-info-dialog/item-info-dialog.component";
+import {CountSubmitDialogComponent} from "../zone-item-count-submit-dialog/count-submit-dialog.component";
 
 @Component({
   selector: 'app-item-count-card',

@@ -3,8 +3,8 @@ import {FormControl, Validators} from '@angular/forms';
 import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {AccessApiService} from "../service/access/access-api.service";
-import {User} from "../request-models/user.model";
-import {ApiResponse} from "../response-models/api-response.model";
+import {User} from "../request-models/user";
+import {ApiResponse} from "../response-models/api-response";
 
 
 @Component({
@@ -89,17 +89,17 @@ export class RegisterComponent {
       return;
     }
 
-    const user = new User(
-      this.profileName.value!,
-      this.email.value!,
-      this.password.value!
-    );
+    const user: User = {
+      profileName: this.profileName.value,
+      userName: this.email.value!,
+      password: this.password.value!
+    };
 
     this.accessApiService.registerUser(user).subscribe({
       next: (response: ApiResponse<string>) => {
-        if(response.isSuccess()){
+        if(response.status === 202){
           this.registerStatusMessage.set('user successfully registered 👍')
-        }else if(response.isConflict()){
+        }else if(response.status === 409){
           this.registerStatusMessage.set('user already registered no recovery')
         }
       },

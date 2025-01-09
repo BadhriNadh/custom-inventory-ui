@@ -13,32 +13,33 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/mater
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatListModule} from "@angular/material/list";
-import { MenuDrawComponent } from './menu-draw/menu-draw.component';
+import { MenuDrawComponent } from './menu/menu-draw/menu-draw.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatInputModule} from "@angular/material/input";
-import { ItemCountCardComponent } from './item-count-card/item-count-card.component';
-import { ItemInfoDialogComponent } from './item-info-dialog/item-info-dialog.component';
+import { ItemCountCardComponent } from './zones-view/zone-item-card/item-count-card.component';
+import { ItemInfoDialogComponent } from './zones-view/zone-item-info-dialog/item-info-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
-import { CountSubmitDialogComponent } from './count-submit-dialog/count-submit-dialog.component';
+import { CountSubmitDialogComponent } from './zones-view/zone-item-count-submit-dialog/count-submit-dialog.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { AddZoneDialogComponent } from './add-zone-dialog/add-zone-dialog.component';
-import { ItemsByZoneComponent } from './items-by-zone/items-by-zone.component';
-import { ItemsByVendorComponent } from './items-by-vendor/items-by-vendor.component';
-import { AllItemsComponent } from './all-items/all-items.component';
-import { AllZonesComponent } from './all-zones/all-zones.component';
-import { AllVendorsComponent } from './all-vendors/all-vendors.component';
+import { AddZoneDialogComponent } from './zones-view/add-zone-dialog/add-zone-dialog.component';
+import { ItemsByZoneComponent } from './zones-view/items-by-zone/items-by-zone.component';
+import { ItemsByVendorComponent } from './vendors-view/items-by-vendor/items-by-vendor.component';
+import { AllItemsComponent } from './items-view/all-items/all-items.component';
+import { AllZonesComponent } from './zones-view/all-zones/all-zones.component';
+import { AllVendorsComponent } from './vendors-view/all-vendors/all-vendors.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
-import { ZoneCardComponent } from './zone-card/zone-card.component';
-import { VendorCardComponent } from './vendor-card/vendor-card.component';
-import {ItemCardComponent} from "./item-card/item-card.component";
-import { AddVendorDialogComponent } from './add-vendor-dialog/add-vendor-dialog.component';
-import { AddItemDialogComponent } from './add-item-dialog/add-item-dialog.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import { ZoneCardComponent } from './zones-view/zone-card/zone-card.component';
+import { VendorCardComponent } from './vendors-view/vendor-card/vendor-card.component';
+import {ItemCardComponent} from "./items-view/item-card/item-card.component";
+import { AddVendorDialogComponent } from './vendors-view/add-vendor-dialog/add-vendor-dialog.component';
+import { AddItemDialogComponent } from './items-view/add-item-dialog/add-item-dialog.component';
+import { LoginComponent } from './users-view/login/login.component';
+import { ProfileComponent } from './users-view/profile/profile.component';
+import { LogoutDialogComponent } from './users-view/logout-dialog/logout-dialog.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './users-view/register/register.component';
 import {HttpClientModule} from "@angular/common/http";
+import { VendorItemCardComponent } from './vendors-view/vendor-item-card/vendor-item-card.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import {HttpClientModule} from "@angular/common/http";
     LoginComponent,
     ProfileComponent,
     LogoutDialogComponent,
-    RegisterComponent
+    RegisterComponent,
+    VendorItemCardComponent
   ],
   imports: [
     BrowserModule,

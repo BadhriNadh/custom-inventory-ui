@@ -1,7 +1,7 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {AddZoneDialogComponent} from "../add-zone-dialog/add-zone-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
-import {AppComponent} from "../app.component";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-items-by-zone',

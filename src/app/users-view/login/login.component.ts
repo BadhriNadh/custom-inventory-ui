@@ -2,10 +2,11 @@ import {Component, EventEmitter, Output, signal} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {merge} from "rxjs";
-import {User} from "../request-models/user.model";
 import {AccessApiService} from "../service/access/access-api.service";
-import {ApiResponse} from "../response-models/api-response.model";
-import {LoginData} from "../response-models/login-data.model";
+import {ApiResponse} from "../response-models/api-response";
+import {LoginData} from "../response-models/login-data";
+import {User} from "../request-models/user";
+import {SessionStorageService} from "../../memory/session-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,7 @@ export class LoginComponent {
 
   hide = signal(true);
 
-  constructor(private accessApiService: AccessApiService) {
+  constructor(private accessApiService: AccessApiService, private sessionStorageService: SessionStorageService) {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
@@ -70,16 +71,16 @@ export class LoginComponent {
       return;
     }
 
-    const user = new User(
-      null,
-      this.email.value!,
-      this.password.value!
-    );
+    const user: User = {
+      profileName: null,
+      userName: this.email.value!,
+      password: this.password.value!
+    };
 
     this.accessApiService.loginUser(user).subscribe({
       next: (response: ApiResponse<LoginData>) => {
-        if (response.isSuccess()) {
-          if (response.data.saveLoginData()) {
+        if (response.status === 202) {
+          if (this.sessionStorageService.saveLoginData(response.data?.token, response.data?.userId)) {
             this.loginEvent.emit();
           } else {
             this.loginStatusMessage.set('Please try again later');
@@ -89,7 +90,6 @@ export class LoginComponent {
         }
       },
       error: (error) => {
-        console.log(error)
         if (error.status === 401) {
           this.loginStatusMessage.set('❌ wrong user name or password')
         }else{

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {User} from "../../request-models/user.model";
-import {map, Observable} from "rxjs";
-import {ApiResponse} from "../../response-models/api-response.model";
-import {LoginData} from "../../response-models/login-data.model";
+
+import {User} from "../../request-models/user";
+import {ApiResponse} from "../../response-models/api-response";
+import {LoginData} from "../../response-models/login-data";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +16,7 @@ export class AccessApiService {
   constructor(private http: HttpClient) { }
 
   registerUser(user: User): Observable<ApiResponse<string>> {
-    return this.http.post<ApiResponse<string>>(`${this.accessApiUrl}/user/register`, user).pipe(
-      map(response => {
-        return new ApiResponse<string>(
-          "",
-          response.status,
-          response.message
-        )
-      })
-    );
+    return this.http.post<ApiResponse<string>>(`${this.accessApiUrl}/user/register`, user)
   }
 
   loginUser(user:  User): Observable<ApiResponse<LoginData>> {
@@ -34,14 +27,6 @@ export class AccessApiService {
       'Content-Type': 'application/json',
     });
 
-    return this.http.get<ApiResponse<LoginData>>(`${this.accessApiUrl}/user/login`, { headers }).pipe(
-      map(response => {
-        return new ApiResponse<LoginData>(
-          new LoginData(response.data.token, response.data.userId),
-          response.status,
-          response.message
-        );
-      })
-    );
+    return this.http.get<ApiResponse<LoginData>>(`${this.accessApiUrl}/user/login`, { headers })
   }
 }
