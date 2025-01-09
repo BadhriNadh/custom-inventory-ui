@@ -4,7 +4,7 @@ import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {AccessApiService} from "../service/access/access-api.service";
 import {User} from "../request-models/user";
-import {ApiResponse} from "../response-models/api-response";
+import {ApiResponse} from "../../models/api-response";
 
 
 @Component({

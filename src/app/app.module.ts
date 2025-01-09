@@ -40,6 +40,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RegisterComponent } from './users-view/register/register.component';
 import {HttpClientModule} from "@angular/common/http";
 import { VendorItemCardComponent } from './vendors-view/vendor-item-card/vendor-item-card.component';
+import { AllStoresComponent } from './stores-view/all-stores/all-stores.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatCardModule} from "@angular/material/card";
+import { StoreCardComponent } from './stores-view/store-card/store-card.component';
+import { AddStoreDialogComponent } from './stores-view/add-store-dialog/add-store-dialog.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +68,10 @@ import { VendorItemCardComponent } from './vendors-view/vendor-item-card/vendor-
     ProfileComponent,
     LogoutDialogComponent,
     RegisterComponent,
-    VendorItemCardComponent
+    VendorItemCardComponent,
+    AllStoresComponent,
+    StoreCardComponent,
+    AddStoreDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +98,9 @@ import { VendorItemCardComponent } from './vendors-view/vendor-item-card/vendor-
     MatTooltipModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule,
+    MatCardModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {subscriptSizing: 'dynamic'}} // Remove wrapper spacing in form elements

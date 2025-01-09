@@ -1,0 +1,17 @@
+<mat-expansion-panel hideToggle class = 'store-card'>
+  <mat-expansion-panel-header>
+    <div class = 'store-card-header'>
+      <mat-panel-title class = 'store-name'> Store name  </mat-panel-title>
+    </div>
+  </mat-expansion-panel-header>
+  <mat-list role="list" class="store-info-list">
+    <mat-icon>image</mat-icon>
+    <mat-list-item role="listitem" class="store-info-list-address">Address: 221B Baker Street in London, England</mat-list-item>
+</mat-list>
+  <div class="action-group">
+    <div></div>
+    <button mat-raised-button class="action-open-btn" *ngIf="true">open</button>
+    <button mat-raised-button class="action-delete-btn" *ngIf="true">Delete</button>
+  </div>
+</mat-expansion-panel>
+

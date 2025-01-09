@@ -42,7 +42,7 @@ export class AppComponent {
   }
 
   loggedIn() {
-    this.pageValue = "zone";
+    this.pageValue = "allStores";
   }
 
   switchToLogin() {

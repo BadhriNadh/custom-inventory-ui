@@ -1,0 +1,6 @@
+.action-group {
+  display: flex;
+  justify-content: space-between; /* Spaces elements across the row */
+  align-items: center; /* Aligns elements vertically */
+  padding-top: 12px;
+}

@@ -21,6 +21,10 @@
     (userLogoutEvent)="userLogout()">
   </app-profile>
 
+  <app-all-stores
+    *ngIf="pageValue === 'allStores'">
+  </app-all-stores>
+
   <app-items-by-zone
     *ngIf="pageValue === 'zone'"
     (toggleMenuEvent)="toggleMenu()">

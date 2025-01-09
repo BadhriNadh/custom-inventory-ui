@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <div class="title-bar-elements">
+    <button mat-raised-button class="title-bar-logout-btn" >logout</button>
+    <div class ="title-bar-Text">
+      <span>Your Stores</span>
+    </div>
+    <button mat-raised-button class="title-bar-add-btn" (click)="openAdd()" >Add</button>
+  </div>
+</mat-toolbar>
+
+<mat-accordion >
+  <mat-list role="list" class="items-list">
+    <app-store-card></app-store-card>
+    <app-store-card></app-store-card>
+    <app-store-card></app-store-card>
+  </mat-list>
+</mat-accordion>
+

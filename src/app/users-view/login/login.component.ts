@@ -3,7 +3,7 @@ import {FormControl, Validators} from "@angular/forms";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {merge} from "rxjs";
 import {AccessApiService} from "../service/access/access-api.service";
-import {ApiResponse} from "../response-models/api-response";
+import {ApiResponse} from "../../models/api-response";
 import {LoginData} from "../response-models/login-data";
 import {User} from "../request-models/user";
 import {SessionStorageService} from "../../memory/session-storage.service";

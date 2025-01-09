@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {User} from "../../request-models/user";
-import {ApiResponse} from "../../response-models/api-response";
+import {ApiResponse} from "../../../models/api-response";
 import {LoginData} from "../../response-models/login-data";
 import {Observable} from "rxjs";
 
