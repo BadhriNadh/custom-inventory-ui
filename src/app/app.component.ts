@@ -45,6 +45,10 @@ export class AppComponent {
     this.pageValue = "allStores";
   }
 
+  selectedStore() {
+    this.pageValue = "zone";
+  }
+
   switchToLogin() {
     this.pageValue = "login";
   }

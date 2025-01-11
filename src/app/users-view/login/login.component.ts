@@ -7,6 +7,7 @@ import {ApiResponse} from "../../models/api-response";
 import {LoginData} from "../response-models/login-data";
 import {User} from "../request-models/user";
 import {SessionStorageService} from "../../memory/session-storage.service";
+import {CookieStorageService} from "../../memory/cookie-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent {
 
   hide = signal(true);
 
-  constructor(private accessApiService: AccessApiService, private sessionStorageService: SessionStorageService) {
+  constructor(private accessApiService: AccessApiService, private cookieStorageService: CookieStorageService) {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
@@ -80,7 +81,7 @@ export class LoginComponent {
     this.accessApiService.loginUser(user).subscribe({
       next: (response: ApiResponse<LoginData>) => {
         if (response.status === 202) {
-          if (this.sessionStorageService.saveLoginData(response.data?.token, response.data?.userId)) {
+          if (this.cookieStorageService.saveLoginData(response.data?.token, response.data?.userId)) {
             this.loginEvent.emit();
           } else {
             this.loginStatusMessage.set('Please try again later');

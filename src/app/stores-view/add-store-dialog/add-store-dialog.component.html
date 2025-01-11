@@ -9,6 +9,7 @@
         [formControl]="storeName"
         (blur)="updateStoreNameErrorMessage()"
       >
+      <mat-hint></mat-hint>
       <mat-error *ngIf="storeName.invalid">{{errorStoreNameMessage()}}</mat-error>
     </mat-form-field>
     <mat-form-field class="store-full-width">

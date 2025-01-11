@@ -22,7 +22,8 @@
   </app-profile>
 
   <app-all-stores
-    *ngIf="pageValue === 'allStores'">
+    *ngIf="pageValue === 'allStores'"
+    (openStoreEvent)="selectedStore()">
   </app-all-stores>
 
   <app-items-by-zone

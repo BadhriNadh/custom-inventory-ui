@@ -9,10 +9,10 @@
 </mat-toolbar>
 
 <mat-accordion >
-  <mat-list role="list" class="items-list">
-    <app-store-card></app-store-card>
-    <app-store-card></app-store-card>
-    <app-store-card></app-store-card>
+  <mat-list role="list" class="stores-list">
+    <app-store-card
+      *ngFor="let store of stores" [store]="store"
+      (openStoreCardEvent)="storeSelected()" ></app-store-card>
   </mat-list>
 </mat-accordion>
 

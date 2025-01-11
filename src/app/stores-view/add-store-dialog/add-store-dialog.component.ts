@@ -10,6 +10,7 @@ import {CreateStoreData} from "../request-models/create-store-data";
 import {SessionStorageService} from "../../memory/session-storage.service";
 import {ApiResponse} from "../../models/api-response";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {CookieStorageService} from "../../memory/cookie-storage.service";
 
 @Component({
   selector: 'app-add-store-dialog',
@@ -26,6 +27,7 @@ export class AddStoreDialogComponent {
 
   constructor(
     private storesApiService: StoresApiService,
+    private cookieStorageService: CookieStorageService,
     private sessionStorageService: SessionStorageService
   ){
     merge(this.storeName.statusChanges, this.storeName.valueChanges)
@@ -49,7 +51,7 @@ export class AddStoreDialogComponent {
     }
 
     const createStoreData: CreateStoreData = {
-      userId: this.sessionStorageService.getLoginUserId()!,
+      userId: this.cookieStorageService.getLoginUserId()!,
       storeName: this.storeName.value!,
       address: this.address.value!
     };
@@ -57,9 +59,10 @@ export class AddStoreDialogComponent {
     this.storesApiService.createStore(createStoreData).subscribe({
       next: (response) => {
         if(response.status === 201){
-          console.log('Store created');
-          this.infoRef.close();
-          // TODO open new store
+          this.sessionStorageService.setItem('storeId', response.data!.storeId)
+          this.sessionStorageService.setItem('storeName', response.data!.storeName)
+          this.sessionStorageService.setItem('address', response.data!.address)
+          this.infoRef.close(true);
         }
       },
       error: (error) => {
