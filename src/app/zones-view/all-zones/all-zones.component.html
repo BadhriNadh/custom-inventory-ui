@@ -17,10 +17,9 @@
 
 <mat-accordion >
   <mat-list role="list" class="items-list">
-    <app-zone-card></app-zone-card>
-    <app-zone-card></app-zone-card>
-    <app-zone-card></app-zone-card>
-    <app-zone-card></app-zone-card>
+    <app-zone-card
+      *ngFor="let zone of zones" [zone]="zone">
+    </app-zone-card>
   </mat-list>
 </mat-accordion>
 

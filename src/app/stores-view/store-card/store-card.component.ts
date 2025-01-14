@@ -14,10 +14,9 @@ export class StoreCardComponent {
   }
 
   openStore() {
-    this.sessionStorageService.setItem('storeId', this.store.storeId)
-    this.sessionStorageService.setItem('storeName', this.store.storeName)
-    this.sessionStorageService.setItem('address', this.store.address)
-
+    //TODO rm this
+    this.sessionStorageService.clear()
+    this.sessionStorageService.setItem('store', this.store)
     this.openStoreCardEvent.emit()
   }
 }

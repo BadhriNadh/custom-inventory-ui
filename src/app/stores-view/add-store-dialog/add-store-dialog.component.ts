@@ -59,9 +59,7 @@ export class AddStoreDialogComponent {
     this.storesApiService.createStore(createStoreData).subscribe({
       next: (response) => {
         if(response.status === 201){
-          this.sessionStorageService.setItem('storeId', response.data!.storeId)
-          this.sessionStorageService.setItem('storeName', response.data!.storeName)
-          this.sessionStorageService.setItem('address', response.data!.address)
+          this.sessionStorageService.setItem('store', response.data!)
           this.infoRef.close(true);
         }
       },

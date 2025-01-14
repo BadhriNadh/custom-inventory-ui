@@ -4,17 +4,20 @@
       <mat-icon>menu</mat-icon>
     </button>
     <div class ="title-bar-Text">
-      <span>{{storeName}}/Zone</span>
+      <span>{{storeName}}/{{selectedZone?.zoneName}}</span>
     </div>
   </div>
 </mat-toolbar>
 
 <mat-form-field class ="zone-selector">
   <mat-label class ="zone-selector-label" >Select zone</mat-label>
-  <mat-select>
-    <mat-option class ="zone-selector-option" value="zone1">zone1</mat-option>
-    <mat-option class ="zone-selector-option" value="zone2">zone1</mat-option>
-    <mat-option class ="zone-selector-option" value="zone2">zone1</mat-option>
+  <mat-select [(value)]="selectedZone">
+    <mat-option
+      class="zone-selector-option"
+      *ngFor="let zone of zones"
+      [value]="zone">
+      {{ zone.zoneName }}
+    </mat-option>
   </mat-select>
 </mat-form-field>
 

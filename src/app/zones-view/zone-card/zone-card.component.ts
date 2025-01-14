@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {ZoneData} from "../response-models/zone-data";
 
 @Component({
   selector: 'app-zone-card',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./zone-card.component.css']
 })
 export class ZoneCardComponent {
-
+  @Input() zone!: ZoneData;
 }

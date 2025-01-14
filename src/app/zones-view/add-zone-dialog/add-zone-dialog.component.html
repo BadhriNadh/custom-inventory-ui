@@ -3,7 +3,12 @@
   <form class="zone-form">
     <mat-form-field class="zone-full-width">
       <mat-label>Zone name</mat-label>
-      <input matInput>
+      <input
+        matInput
+        required
+        [formControl]="zoneName"
+        (blur)="updateZoneNameErrorMessage()"
+      >
       <mat-hint>zone name should be unique</mat-hint>
     </mat-form-field>
     </form>
