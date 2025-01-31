@@ -1,7 +1,6 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {AddZoneDialogComponent} from "../add-zone-dialog/add-zone-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
-import {AppComponent} from "../../app.component";
 import {SessionStorageService} from "../../memory/session-storage.service";
 import {StoreData} from "../../stores-view/response-models/store-data";
 import {ZoneData} from "../response-models/zone-data";
@@ -13,7 +12,6 @@ import {ZoneApiService} from "../service/zone-api.service";
   styleUrls: ['./items-by-zone.component.css']
 })
 export class ItemsByZoneComponent {
-
   @Output() toggleMenuEvent = new EventEmitter<void>();
   readonly matDialog = inject(MatDialog);
 
@@ -52,7 +50,7 @@ export class ItemsByZoneComponent {
     }
   }
 
-  // Up coming
+  // Adding item to zone
   openAdd(): void {
     const addRef = this.matDialog.open(AddZoneDialogComponent);
 

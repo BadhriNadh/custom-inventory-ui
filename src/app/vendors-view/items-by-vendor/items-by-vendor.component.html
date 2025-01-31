@@ -4,19 +4,21 @@
       <mat-icon>menu</mat-icon>
     </button>
     <div class ="title-bar-Text">
-      <span>Store Name/Vendor</span>
+      <span>{{storeName}}/{{selectedVendor?.vendorName}}</span>
     </div>
   </div>
 </mat-toolbar>
 
 <mat-form-field class ="vendor-selector">
   <mat-label class ="vendor-selector-label" >Select vendor</mat-label>
-  <mat-select>
-    <mat-option class ="vendor-selector-option" value="vendor1">vendor1</mat-option>
-    <mat-option class ="vendor-selector-option" value="vendor2">vendor1</mat-option>
-    <mat-option class ="vendor-selector-option" value="vendor2">vendor1</mat-option>
+  <mat-select [(value)]="selectedVendor">
+    <mat-option
+      class="vendor-selector-option"
+      *ngFor="let vendor of vendors"
+      [value]="vendor">
+      {{ vendor.vendorName }}
+    </mat-option>
   </mat-select>
-
 </mat-form-field>
 
 <mat-form-field appearance="outline" class="search">

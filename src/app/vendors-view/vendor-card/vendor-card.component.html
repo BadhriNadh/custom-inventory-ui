@@ -1,13 +1,13 @@
 <mat-expansion-panel hideToggle class = 'vendor-card'>
   <mat-expansion-panel-header>
     <div class = 'vendor-card-header'>
-      <mat-panel-title class = 'vendor-name'> Vendor name  </mat-panel-title>
+      <mat-panel-title class = 'vendor-name'> {{vendor.vendorName}}  </mat-panel-title>
     </div>
   </mat-expansion-panel-header>
   <mat-list role="list" class="vendor-info-list">
-    <mat-list-item role="listitem" class="vendor-info-list-id">Id: 100028982</mat-list-item>
-    <mat-list-item role="listitem" class="vendor-info-list-create">Created/Updated: 21-07-2024</mat-list-item>
-    <mat-list-item role="listitem" class="vendor-info-list-item-count">Total items: 40</mat-list-item>
+    <mat-list-item role="listitem" class="vendor-info-list-id">Id: {{vendor.vendorId}}</mat-list-item>
+<!--    <mat-list-item role="listitem" class="vendor-info-list-create">Created/Updated: 21-07-2024</mat-list-item>-->
+<!--    <mat-list-item role="listitem" class="vendor-info-list-item-count">Total items: 40</mat-list-item>-->
   </mat-list>
   <div class="action-group">
     <div></div>

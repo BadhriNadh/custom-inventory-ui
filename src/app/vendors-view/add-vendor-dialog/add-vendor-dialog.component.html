@@ -3,7 +3,12 @@
   <form class="vendor-form">
     <mat-form-field class="vendor-full-width">
       <mat-label>Vendor name</mat-label>
-      <input matInput>
+      <input
+        matInput
+        required
+        [formControl]="vendorName"
+        (blur)="updateVendorNameErrorMessage()"
+      >
       <mat-hint>vendor name must be unique</mat-hint>
     </mat-form-field>
   </form>
