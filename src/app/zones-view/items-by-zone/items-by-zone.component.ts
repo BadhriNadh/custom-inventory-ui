@@ -1,10 +1,10 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {AddZoneDialogComponent} from "../add-zone-dialog/add-zone-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {ZoneData} from "../response-models/zone-data";
+import {ZoneService} from "../../service/zone.service";
 import {SessionStorageService} from "../../memory/session-storage.service";
 import {StoreData} from "../../stores-view/response-models/store-data";
-import {ZoneData} from "../response-models/zone-data";
-import {ZoneApiService} from "../service/zone-api.service";
 
 @Component({
   selector: 'app-items-by-zone',
@@ -17,37 +17,19 @@ export class ItemsByZoneComponent {
 
   selectedZone: ZoneData | undefined;
 
-  constructor(
-    private sessionStorageService: SessionStorageService,
-    private zoneApiService:ZoneApiService)
-  {}
   storeName: string | null = null;
-
-  ngOnInit(): void {
-    this.storeName = this.sessionStorageService.getItem<StoreData>('store')!.storeName
-    this.loadZones();
-  }
 
   zones: ZoneData[] = [];
 
-  private loadZones(){
-    const cachedZones = this.sessionStorageService.getItem<ZoneData[]>('all-zones');
+  constructor(
+    private zoneService: ZoneService,
+    private sessionStorageService: SessionStorageService,
+  ) {}
 
-    if (cachedZones && cachedZones.length > 0) {
-      this.zones = cachedZones;
-    } else {
-      this.zoneApiService.getAllZones(this.sessionStorageService.getItem<StoreData>('store')!.storeId).subscribe({
-        next: (response) => {
-          if (response.data && response.data.length > 0) {
-            this.zones = response.data;
-            this.sessionStorageService.setItem('all-zones', this.zones);
-          }
-        },
-        error: (err) => {
-          console.error('Error fetching zones:', err);
-        }
-      });
-    }
+  ngOnInit(): void {
+    this.storeName = this.sessionStorageService.getItem<StoreData>('store')!.storeName
+    this.zoneService.loadZones();
+    this.zoneService.zones$.subscribe(zones => this.zones = zones);
   }
 
   // Adding item to zone

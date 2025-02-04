@@ -4,7 +4,7 @@ import {AddZoneDialogComponent} from "../../zones-view/add-zone-dialog/add-zone-
 import {VendorData} from "../response-models/vendor-data";
 import {StoreData} from "../../stores-view/response-models/store-data";
 import {SessionStorageService} from "../../memory/session-storage.service";
-import {VendorApiService} from "../service/vendor-api.service";
+import {VendorService} from "../../service/vendor.service";
 
 @Component({
   selector: 'app-items-by-vendor',
@@ -19,35 +19,16 @@ export class ItemsByVendorComponent {
 
   constructor(
     private sessionStorageService: SessionStorageService,
-    private vendorApiService:VendorApiService)
-  {}
+    private vendorService: VendorService
+  ){}
+
+  vendors: VendorData[] = [];
   storeName: string | null = null;
 
   ngOnInit(): void {
     this.storeName = this.sessionStorageService.getItem<StoreData>('store')!.storeName
-    this.loadVendors();
-  }
-
-  vendors: VendorData[] = [];
-
-  private loadVendors() {
-    const cachedVendors = this.sessionStorageService.getItem<VendorData[]>('all-vendors');
-
-    if (cachedVendors && cachedVendors.length > 0) {
-      this.vendors = cachedVendors;
-    } else {
-      this.vendorApiService.getAllVendors(this.sessionStorageService.getItem<StoreData>('store')!.storeId).subscribe({
-        next: (response) => {
-          if (response.data && response.data.length > 0) {
-            this.vendors = response.data;
-            this.sessionStorageService.setItem('all-vendors', this.vendors);
-          }
-        },
-        error: (err) => {
-          console.error('Error fetching vendors:', err);
-        }
-      });
-    }
+    this.vendorService.loadVendors();
+    this.vendorService.vendors$.subscribe(vendors => this.vendors = vendors);
   }
 
   // Adding item to vendor

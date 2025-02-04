@@ -8,6 +8,7 @@ import {ZoneData} from "../../zones-view/response-models/zone-data";
 import {VendorApiService} from "../service/vendor-api.service";
 import {VendorData} from "../response-models/vendor-data";
 import {StoreData} from "../../stores-view/response-models/store-data";
+import {VendorService} from "../../service/vendor.service";
 
 @Component({
   selector: 'app-all-vendors',
@@ -19,35 +20,14 @@ export class AllVendorsComponent {
   readonly matDialog = inject(MatDialog);
 
   constructor(
-    private sessionStorageService: SessionStorageService,
-    private vendorApiService: VendorApiService
+    private vendorService: VendorService
   ){}
 
   vendors: VendorData[] = [];
 
   ngOnInit(): void {
-    this.loadVendors();
-  }
-
-  private loadVendors() {
-    const cachedVendors = this.sessionStorageService.getItem<VendorData[]>('all-vendors');
-
-    if (cachedVendors && cachedVendors.length > 0) {
-      this.vendors = cachedVendors;
-    } else {
-      this.vendorApiService.getAllVendors(this.sessionStorageService.getItem<StoreData>('store')!.storeId).subscribe({
-        next: (response) => {
-          if (response.data && response.data.length > 0) {
-            this.vendors = response.data;
-            this.sessionStorageService.setItem('all-vendors', this.vendors);
-          }
-        },
-        error: (err) => {
-          console.error('Error fetching vendors:', err);
-        }
-      });
-    }
-
+    this.vendorService.loadVendors();
+    this.vendorService.vendors$.subscribe(vendors => this.vendors = vendors);
   }
 
   openAdd(): void {
@@ -55,7 +35,8 @@ export class AllVendorsComponent {
 
     addRef.afterClosed().subscribe((result) => {
       if(result === true){
-        this.loadVendors();
+        this.vendorService.loadVendors();
+        this.vendorService.vendors$.subscribe(vendors => this.vendors = vendors);
       }
     });
   }
