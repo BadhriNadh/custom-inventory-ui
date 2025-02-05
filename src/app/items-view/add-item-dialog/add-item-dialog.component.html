@@ -3,28 +3,41 @@
   <form class="item-form">
     <mat-form-field class="item-full-width">
       <mat-label>Item</mat-label>
-      <input matInput>
+      <input
+        matInput
+        required
+        [formControl]="itemName"
+        (blur)="updateItemNameErrorMessage()"
+      >
       <mat-hint>item name should be unique</mat-hint>
+      <mat-error *ngIf="itemName.invalid">{{errorItemNameMessage()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Minimum quantity</mat-label>
-      <input matInput type="number" min="0" step="1">
+      <input
+        matInput
+        type="number" min="0" step="1"
+        required
+        [formControl]="minQuantity"
+        (blur)="updateMinQuantityErrorMessage()"
+      >
+      <mat-error *ngIf="minQuantity.invalid">{{errorMinQuantityMessage()}}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="zone-selector">
       <mat-label>Select zones</mat-label>
-      <mat-select multiple >
-        <mat-option class ="zone-selector-option" value="zone1">zone1</mat-option>
-        <mat-option class ="zone-selector-option" value="zone2">zone1</mat-option>
-        <mat-option class ="zone-selector-option" value="zone2">zone1</mat-option>
+      <mat-select multiple [(value)]="selectedZoneIds">
+        <mat-option
+          class ="zone-selector-option" [value]="zone.zoneId"
+          *ngFor="let zone of zones">{{zone.zoneName}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="vendor-selector">
       <mat-label>Select vendor</mat-label>
-      <mat-select multiple>
-        <mat-option class ="vendor-selector-option" value="vendor1">vendor1</mat-option>
-        <mat-option class ="vendor-selector-option" value="vendor2">vendor1</mat-option>
-        <mat-option class ="vendor-selector-option" value="vendor2">vendor1</mat-option>
+      <mat-select multiple [(value)]="selectedVendorIds">
+        <mat-option
+          class ="vendor-selector-option" [value]="vendor.vendorId"
+          *ngFor="let vendor of vendors" > {{vendor.vendorName}}</mat-option>
       </mat-select>
     </mat-form-field>
   </form>

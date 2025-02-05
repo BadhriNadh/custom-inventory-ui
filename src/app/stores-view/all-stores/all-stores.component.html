@@ -8,7 +8,12 @@
   </div>
 </mat-toolbar>
 
-<mat-accordion >
+<mat-form-field appearance="outline" class="search">
+  <input matInput placeholder="search" class="search-input">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
+<mat-accordion>
   <mat-list role="list" class="stores-list">
     <app-store-card
       *ngFor="let store of stores" [store]="store"
