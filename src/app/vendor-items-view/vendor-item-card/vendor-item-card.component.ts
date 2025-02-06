@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {VendorItemData} from "../response-models/vendor-item-data";
 
 @Component({
   selector: 'app-vendor-item-card',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./vendor-item-card.component.css']
 })
 export class VendorItemCardComponent {
+  @Input() vendorItem!: VendorItemData;
 
 }

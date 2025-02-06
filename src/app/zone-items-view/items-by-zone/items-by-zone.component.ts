@@ -1,10 +1,12 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import {AddZoneDialogComponent} from "../add-zone-dialog/add-zone-dialog.component";
+import {AddZoneDialogComponent} from "../../zones-view/add-zone-dialog/add-zone-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
-import {ZoneData} from "../response-models/zone-data";
+import {ZoneData} from "../../zones-view/response-models/zone-data";
 import {ZoneService} from "../../service/zone.service";
 import {SessionStorageService} from "../../memory/session-storage.service";
 import {StoreData} from "../../stores-view/response-models/store-data";
+import {ZoneItemsApiService} from "../service/zone-items-api.service";
+import {ZoneItemData} from "../response-models/zone-item-data";
 
 @Component({
   selector: 'app-items-by-zone',
@@ -21,9 +23,12 @@ export class ItemsByZoneComponent {
 
   zones: ZoneData[] = [];
 
+  zoneItems: ZoneItemData[] = [];
+
   constructor(
     private zoneService: ZoneService,
     private sessionStorageService: SessionStorageService,
+    private zoneItemsApiService: ZoneItemsApiService
   ) {}
 
   ngOnInit(): void {
@@ -42,5 +47,18 @@ export class ItemsByZoneComponent {
 
   toggleMenuEventEmit() {
     this.toggleMenuEvent.emit();
+  }
+
+  loadZoneItems() {
+    this.zoneItemsApiService.getAllZoneItems(this.selectedZone!.zoneId).subscribe({
+      next: (response) => {
+        if (response.data && response.data.length > 0) {
+          this.zoneItems = response.data;
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching items:', err);
+      }
+    });
   }
 }

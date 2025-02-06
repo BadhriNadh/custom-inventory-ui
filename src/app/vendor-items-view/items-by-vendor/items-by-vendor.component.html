@@ -11,7 +11,7 @@
 
 <mat-form-field class ="vendor-selector">
   <mat-label class ="vendor-selector-label" >Select vendor</mat-label>
-  <mat-select [(value)]="selectedVendor">
+  <mat-select [(value)]="selectedVendor" (selectionChange) = "loadVendorItems()">
     <mat-option
       class="vendor-selector-option"
       *ngFor="let vendor of vendors"
@@ -28,9 +28,9 @@
 
 <mat-accordion >
   <mat-list role="list" class="items-list">
-    <app-vendor-item-card></app-vendor-item-card>
-    <app-vendor-item-card></app-vendor-item-card>
-    <app-vendor-item-card></app-vendor-item-card>
+    <app-vendor-item-card
+      *ngFor="let vendorItem of vendorItems" [vendorItem]="vendorItem">
+    </app-vendor-item-card>
   </mat-list>
 </mat-accordion>
 

@@ -11,7 +11,7 @@
 
 <mat-form-field class ="zone-selector">
   <mat-label class ="zone-selector-label" >Select zone</mat-label>
-  <mat-select [(value)]="selectedZone">
+  <mat-select [(value)]="selectedZone" (selectionChange) = "loadZoneItems()" >
     <mat-option
       class="zone-selector-option"
       *ngFor="let zone of zones"
@@ -28,9 +28,9 @@
 
 <mat-accordion >
   <mat-list role="list" class="items-list">
-    <app-item-count-card></app-item-count-card>
-    <app-item-count-card></app-item-count-card>
-    <app-item-count-card></app-item-count-card>
-    <app-item-count-card></app-item-count-card>
+    <app-item-count-card
+      *ngFor="let zoneItem of zoneItems" [zoneItem]="zoneItem">
+    </app-item-count-card>
+
   </mat-list>
 </mat-accordion>
