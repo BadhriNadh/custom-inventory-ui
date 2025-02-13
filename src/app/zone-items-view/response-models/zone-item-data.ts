@@ -1,7 +1,8 @@
 export interface ZoneItemData {
-  itemId: number ;
+  itemId: number;
+  zoneId: number;
   itemName: string;
   quantity: number;
   zoneCount: number;
-  isLow: boolean;
+  minQuantity: number;
 }

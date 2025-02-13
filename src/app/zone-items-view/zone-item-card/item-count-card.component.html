@@ -4,7 +4,7 @@
       <mat-panel-title class = 'item-name'> {{zoneItem.itemName}} </mat-panel-title>
 <!--      <mat-panel-description class = 'item-save-count'> {{zoneItem.zoneCount}} </mat-panel-description>-->
       <div class = 'item-status'>
-        <mat-icon class = 'item-status-quant' *ngIf="zoneItem.isLow">trending_down</mat-icon>
+        <mat-icon class = 'item-status-quant' *ngIf="zoneItem.quantity<zoneItem.minQuantity">trending_down</mat-icon>
       </div>
     </div>
   </mat-expansion-panel-header>
@@ -12,14 +12,14 @@
     <mat-list-item role="listitem" class="item-info-list-item-count">Zone count: {{zoneItem.zoneCount}}</mat-list-item>
     <mat-list-item role="listitem" class="item-info-list-item-count">Total: {{zoneItem.quantity}}</mat-list-item>
     <mat-list-item role="listitem" class="item-info-list-item-count">Adjusted: {{countChange}}</mat-list-item>
-
+    <mat-list-item role="listitem" class="item-info-list-item-count">Minimum: {{zoneItem.minQuantity}}</mat-list-item>
   </mat-list>
   <div class="count-input-group">
     <button mat-icon-button = 'item-edit-minus-btn' (click)="decreaseCount()">
       <mat-icon>remove</mat-icon>
     </button>
     <mat-form-field class = 'item-count-input-txt' appearance="outline">
-      <input matInput type="number"  min="0"  [(ngModel)]="zoneItem.zoneCount">
+      <input matInput type="number"  min="0"  [(ngModel)]="zoneItem.zoneCount+countChange">
     </mat-form-field>
     <button mat-icon-button class = 'item-edit-add-btn' (click)="increaseCount()">
       <mat-icon>add</mat-icon>

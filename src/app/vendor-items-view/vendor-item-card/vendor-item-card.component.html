@@ -2,7 +2,7 @@
   <mat-expansion-panel-header>
     <div class = 'item-card-header'>
       <mat-panel-title class = 'item-name'> {{vendorItem.itemName}}  </mat-panel-title>
-      <mat-icon class = 'item-status-quant' *ngIf="vendorItem.isLow">trending_down</mat-icon>
+      <mat-icon class = 'item-status-quant' *ngIf="vendorItem.quantity<vendorItem.minQuantity">trending_down</mat-icon>
 <!--      <mat-panel-description class = 'item-total-count'> {{vendorItem.quantity}} </mat-panel-description>-->
 <!--      <mat-panel-description class = 'item-quant'> Quant: Box </mat-panel-description>-->
     </div>
