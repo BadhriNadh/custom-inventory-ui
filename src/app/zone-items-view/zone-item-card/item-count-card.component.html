@@ -19,7 +19,7 @@
       <mat-icon>remove</mat-icon>
     </button>
     <mat-form-field class = 'item-count-input-txt' appearance="outline">
-      <input matInput type="number"  min="0"  [(ngModel)]="zoneItem.zoneCount+countChange">
+      <input matInput type="number"  min="0"  [(ngModel)]="updatedZoneCount" (ngModelChange)="onZoneCountChange()">
     </mat-form-field>
     <button mat-icon-button class = 'item-edit-add-btn' (click)="increaseCount()">
       <mat-icon>add</mat-icon>

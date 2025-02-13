@@ -16,6 +16,11 @@ export class ItemCountCardComponent {
   @Input() zoneItem!: ZoneItemData;
   @Input() zoneId!: number;
   countChange: number = 0;
+  updatedZoneCount: number = 0;
+
+  ngOnInit() {
+    this.updatedZoneCount = this.zoneItem.zoneCount;
+  }
 
   openInfo(): void {
     const infoRef = this.matDialog.open(ItemInfoDialogComponent);
@@ -45,12 +50,17 @@ export class ItemCountCardComponent {
 
   increaseCount() {
     this.countChange++;
+    this.updatedZoneCount++;
   }
 
   decreaseCount() {
     if (this.zoneItem.zoneCount+this.countChange > 0) {
       this.countChange--;
+      this.updatedZoneCount--;
     }
   }
 
+  onZoneCountChange() {
+    this.countChange = this.zoneItem.zoneCount-this.updatedZoneCount;
+  }
 }
