@@ -5,18 +5,19 @@ import {User} from "../../request-models/user";
 import {ApiResponse} from "../../../models/api-response";
 import {LoginData} from "../../response-models/login-data";
 import {Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccessApiService {
 
-  private accessApiUrl = 'http://localhost:8080';
+  private accessApiUrl = environment.accessApiBaseUrl+'/user';
 
   constructor(private http: HttpClient) { }
 
   registerUser(user: User): Observable<ApiResponse<string>> {
-    return this.http.post<ApiResponse<string>>(`${this.accessApiUrl}/user/register`, user)
+    return this.http.post<ApiResponse<string>>(`${this.accessApiUrl}/register`, user)
   }
 
   loginUser(user:  User): Observable<ApiResponse<LoginData>> {
@@ -27,6 +28,6 @@ export class AccessApiService {
       'Content-Type': 'application/json',
     });
 
-    return this.http.get<ApiResponse<LoginData>>(`${this.accessApiUrl}/user/login`, { headers })
+    return this.http.get<ApiResponse<LoginData>>(`${this.accessApiUrl}/login`, { headers })
   }
 }

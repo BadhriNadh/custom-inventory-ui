@@ -5,13 +5,14 @@ import {Observable} from "rxjs";
 import {ApiResponse} from "../../models/api-response";
 import {VendorItemData} from "../../vendor-items-view/response-models/vendor-item-data";
 import {ZoneItemData} from "../response-models/zone-item-data";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ZoneItemsApiService {
 
-  private accessApiUrl = 'http://localhost:8081/zone-item';
+  private apiUrl = environment.inventoryApiBaseUrl+'/zone-item';
 
   constructor(private http: HttpClient, private cookieStorageService: CookieStorageService) { }
 
@@ -22,6 +23,6 @@ export class ZoneItemsApiService {
       Authorization: basicAuthHeader,
       'Content-Type': 'application/json',
     });
-    return this.http.get<ApiResponse<ZoneItemData[]>>(`${this.accessApiUrl}/get-zone-items?zoneId=${zoneId}`, {headers});
+    return this.http.get<ApiResponse<ZoneItemData[]>>(`${this.apiUrl}/get-zone-items?zoneId=${zoneId}`, {headers});
   }
 }

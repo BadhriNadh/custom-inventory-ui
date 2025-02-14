@@ -5,13 +5,14 @@ import {Observable} from "rxjs";
 import {ApiResponse} from "../../models/api-response";
 import {CreateItemData} from "../request-models/create-item-data";
 import {ItemData} from "../response-models/item-data";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemApiService {
 
-  private accessApiUrl = 'http://localhost:8081/item';
+  private apiUrl = environment.inventoryApiBaseUrl+'/item';
 
   constructor(private http: HttpClient, private cookieStorageService: CookieStorageService) { }
 
@@ -22,7 +23,7 @@ export class ItemApiService {
       Authorization: basicAuthHeader,
       'Content-Type': 'application/json',
     });
-    return this.http.post<ApiResponse<ItemData[]>>(`${this.accessApiUrl}/create-item`, createItemData, {headers})
+    return this.http.post<ApiResponse<ItemData[]>>(`${this.apiUrl}/create-item`, createItemData, {headers})
   }
 
 
@@ -33,6 +34,6 @@ export class ItemApiService {
       Authorization: basicAuthHeader,
       'Content-Type': 'application/json',
     });
-    return this.http.get<ApiResponse<ItemData[]>>(`${this.accessApiUrl}/get-items?storeId=${storeId}`, {headers});
+    return this.http.get<ApiResponse<ItemData[]>>(`${this.apiUrl}/get-items?storeId=${storeId}`, {headers});
   }
 }

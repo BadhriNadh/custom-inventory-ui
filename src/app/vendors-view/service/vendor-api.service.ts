@@ -6,13 +6,14 @@ import {ApiResponse} from "../../models/api-response";
 import {CreateVendorData} from "../request-models/create-vendor-data";
 import {VendorData} from "../response-models/vendor-data";
 import {VendorItemData} from "../../vendor-items-view/response-models/vendor-item-data";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class VendorApiService {
 
-  private accessApiUrl = 'http://localhost:8081/vendor';
+  private apiUrl = environment.inventoryApiBaseUrl+'/vendor';
 
   constructor(private http: HttpClient, private cookieStorageService: CookieStorageService) { }
 
@@ -23,7 +24,7 @@ export class VendorApiService {
       Authorization: basicAuthHeader,
       'Content-Type': 'application/json',
     });
-    return this.http.post<ApiResponse<VendorData[]>>(`${this.accessApiUrl}/create-vendor`, createVendorData, {headers})
+    return this.http.post<ApiResponse<VendorData[]>>(`${this.apiUrl}/create-vendor`, createVendorData, {headers})
   }
 
   getAllVendors(storeId: number): Observable<ApiResponse<VendorData[]>> {
@@ -33,6 +34,6 @@ export class VendorApiService {
       Authorization: basicAuthHeader,
       'Content-Type': 'application/json',
     });
-    return this.http.get<ApiResponse<VendorData[]>>(`${this.accessApiUrl}/get-vendors?storeId=${storeId}`, {headers});
+    return this.http.get<ApiResponse<VendorData[]>>(`${this.apiUrl}/get-vendors?storeId=${storeId}`, {headers});
   }
 }
