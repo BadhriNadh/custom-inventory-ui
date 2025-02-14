@@ -61,6 +61,6 @@ export class ItemCountCardComponent {
   }
 
   onZoneCountChange() {
-    this.countChange = this.zoneItem.zoneCount-this.updatedZoneCount;
+      this.countChange = this.updatedZoneCount-this.zoneItem.zoneCount;
   }
 }
