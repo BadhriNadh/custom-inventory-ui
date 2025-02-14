@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {ApiResponse} from "../../models/api-response";
 import {CreateZoneData} from "../request-models/create-zone-data";
 import {ZoneData} from "../response-models/zone-data";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

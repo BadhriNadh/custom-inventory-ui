@@ -5,7 +5,7 @@ import {ApiResponse} from "../../models/api-response";
 import {StoreData} from "../response-models/store-data";
 import {CreateStoreData} from "../request-models/create-store-data";
 import {CookieStorageService} from "../../memory/cookie-storage.service";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

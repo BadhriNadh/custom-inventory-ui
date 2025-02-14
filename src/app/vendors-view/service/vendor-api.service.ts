@@ -6,7 +6,7 @@ import {ApiResponse} from "../../models/api-response";
 import {CreateVendorData} from "../request-models/create-vendor-data";
 import {VendorData} from "../response-models/vendor-data";
 import {VendorItemData} from "../../vendor-items-view/response-models/vendor-item-data";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

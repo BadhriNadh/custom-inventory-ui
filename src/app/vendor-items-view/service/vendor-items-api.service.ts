@@ -4,7 +4,7 @@ import {CookieStorageService} from "../../memory/cookie-storage.service";
 import {Observable} from "rxjs";
 import {ApiResponse} from "../../models/api-response";
 import {VendorItemData} from "../response-models/vendor-item-data";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

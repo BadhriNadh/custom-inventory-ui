@@ -8,7 +8,7 @@ import {ZoneItemCountData} from "../response-models/zone-item-count-data";
 import {CreateZoneData} from "../../zones-view/request-models/create-zone-data";
 import {ZoneData} from "../../zones-view/response-models/zone-data";
 import {UpdateZoneItemCountData} from "../request-models/update-zone-item-count-data";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

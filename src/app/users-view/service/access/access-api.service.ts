@@ -5,7 +5,7 @@ import {User} from "../../request-models/user";
 import {ApiResponse} from "../../../models/api-response";
 import {LoginData} from "../../response-models/login-data";
 import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment";
+import {environment} from "../../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
